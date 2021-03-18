@@ -1,0 +1,18 @@
+.menu-item {
+	height: 120px;
+	background-color: #252525;
+	/* margin: auto; */
+	display: flex;
+	color: white;
+}
+
+.menu-link {
+	margin: auto;
+	text-decoration: none;
+	color: white;
+}
+
+.menu-link :hover {
+	color: red;
+	text-decoration: none;
+}
