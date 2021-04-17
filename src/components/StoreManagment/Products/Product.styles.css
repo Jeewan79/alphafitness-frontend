@@ -1,0 +1,82 @@
+.image-upload-container {
+	margin-top: 20px !important;
+	margin: auto;
+
+	position: relative;
+
+	border: 2px dashed #000000;
+	background-color: #bff8fa;
+	padding: 35px 20px;
+	width: 90%;
+	max-width: 1140px;
+
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.image-upload-input {
+	font-size: 18px;
+	display: block;
+	width: 100%;
+	border: none;
+	text-transform: none;
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	opacity: 0;
+	background-color: white;
+}
+
+.image-upload-label {
+	font-size: 13px;
+	color: black;
+}
+
+.product-upload-preview {
+	/* height: 15rem; */
+
+	width: 20rem;
+}
+
+.customer-product {
+	height: 200px;
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+
+.unavailable-text {
+	color: red;
+	text-transform: capitalize;
+	font-weight: 500;
+}
+
+.available-text {
+	text-transform: capitalize;
+	font-weight: 500;
+	color: rgb(9, 172, 9);
+}
+
+.image-view-container {
+	height: 350px;
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+.admin-product-view {
+	min-height: 100px;
+	margin: 10px;
+	padding: 10px;
+	background-color: rgb(233, 233, 233);
+	border: 1px solid rgb(160, 160, 160);
+}
+.admin-product-image {
+	height: 100px;
+
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+}
