@@ -1,0 +1,14 @@
+.ad-create-form-image {
+	background-repeat: no-repeat;
+	background-size: cover;
+	min-height: 360px;
+	background-position: center;
+}
+
+.ad-card-img {
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	min-height: 160px;
+	max-height: 350px !important;
+}
