@@ -1,7 +1,10 @@
 import React, {Component} from 'react';
 import axios from 'axios';
+//import {withRouter} from 'react-router-dom';
 
-export default class RemoveItem extends Component {
+
+export default class EditItem extends Component {
+
     constructor(props) {
         super(props);
 
@@ -26,7 +29,7 @@ export default class RemoveItem extends Component {
     }
 
     componentDidMount() {
-        axios.get('http://localhost:4000/inventory/'+this.props.match.params.id)
+        axios.get('http://localhost:4000/items/'+this.props.match.params.id)
             .then(response => {
                 this.setState({
                     item_id: response.data.item_id,
@@ -43,10 +46,52 @@ export default class RemoveItem extends Component {
             })
     }
 
+    onChangeItemId(e) {
+        this.setState({
+            item_id: e.target.value
+        });
+    }
+    
+    onChangeItemType(e) {
+        this.setState({
+            item_type: e.target.value
+        });
+    }
+
+    onChangeItemCondition(e) {
+        this.setState({
+            item_condition: e.target.value
+        });
+    }
+
+    onChangeItemName(e) {
+        this.setState({
+            item_name: e.target.value
+        });
+    }
+
+    onChangeItemAmount(e) {
+        this.setState({
+            item_amount: e.target.value
+        });
+    }
+
+    onChangeItemWarranty(e) {
+        this.setState({
+            item_warranty: e.target.value
+        });
+    }
+
+    onChangeItemPurchaseDate(e) {
+        this.setState({
+            item_purchaseDate: e.target.value
+        });
+    }
+
     onSubmit(e) {
         e.preventDefault();
         
-        console.log('Deleted');
+        console.log('Updated');
 
         const obj = {
             item_id: this.state.item_id,
@@ -58,9 +103,9 @@ export default class RemoveItem extends Component {
             item_purchaseDate: this.state.item_purchaseDate
         };
 
-        axios.post('http://localhost:4000/items/edit/'+this.props.removeClick, obj)
-            .then(res => console.log('Deleted Item'));
-
+        axios.put('http://localhost:4000/items/update/'+this.props.match.params.id, obj)
+            .then(res => console.log(res.data));
+        
         this.props.history.push('/');
     }
 
@@ -68,21 +113,21 @@ export default class RemoveItem extends Component {
         return(
             <div>
                 <h3>Edit Item</h3>
-                <form onSubmit={this.props.onSubmit}>
+                <form onSubmit={this.onSubmit}>
                     <div>
                         <div className="form-group">
                             <label>ID:</label>
                             <input  type="text" 
                                     className="form-control" 
                                     value={this.state.item_id} 
-                                    />
+                                    onChange={this.onChangeItemId}/>
                         </div>
                         <div className="form-group">
                             <label>Type:</label>
                             <input  type="text" 
                                     className="form-control" 
                                     value={this.state.item_type} 
-                                    />
+                                    onChange={this.onChangeItemType}/>
                         </div>
                         <div className="form-group">
                             <label>Condition:</label>
@@ -93,7 +138,7 @@ export default class RemoveItem extends Component {
                                         id="conditionNew"
                                         value="New"
                                         checked={this.state.item_condition==='New'}
-                                        />
+                                        onChange={this.onChangeItemCondition}/>
                                 <label className="form-check-label">New</label>
                             </div>
                             <div className="form-check form-check-inline">
@@ -103,7 +148,7 @@ export default class RemoveItem extends Component {
                                         id="conditionUsed"
                                         value="Used"
                                         checked={this.state.item_condition==='Used'}
-                                        />
+                                        onChange={this.onChangeItemCondition}/>
                                 <label className="form-check-label">Used</label>
                             </div>
                             <div className="form-check form-check-inline">
@@ -113,7 +158,7 @@ export default class RemoveItem extends Component {
                                         id="conditionNeedsRepairs"
                                         value="Needs Repairs"
                                         checked={this.state.item_condition==='Needs Repairs'}
-                                        />
+                                        onChange={this.onChangeItemCondition}/>
                                 <label className="form-check-label">Needs Repairs</label>
                             </div>
                         </div>
@@ -122,32 +167,32 @@ export default class RemoveItem extends Component {
                             <input  type="text" 
                                     className="form-control" 
                                     value={this.state.item_name} 
-                                    />
+                                    onChange={this.onChangeItemName}/>
                         </div>
                         <div className="form-group">
                             <label>Amount:</label>
                             <input  type="number" 
                                     className="form-control" 
                                     value={this.state.item_amount} 
-                                    />
+                                    onChange={this.onChangeItemAmount}/>
                         </div>
                         <div className="form-group">
                             <label>warranty:</label>
                             <input  type="text" 
                                     className="form-control" 
                                     value={this.state.item_warranty} 
-                                    />
+                                    onChange={this.onChangeItemWarranty}/>
                         </div>
                         <div className="form-group">
                             <label>Purchase Date:</label>
                             <input  type="text" 
                                     className="form-control" 
                                     value={this.state.item_purchaseDate} 
-                                    />
+                                    onChange={this.onChangeItemPurchaseDate}/>
                         </div>
                         <br/>
                         <div className="form-group">
-                            <input type="submit" value="Delete Item" className="btn btn-primary"/>
+                            <input type="submit" value="Save Changes" className="btn btn-primary"/>
                         </div>
                     </div>
                 </form>
@@ -155,3 +200,4 @@ export default class RemoveItem extends Component {
         )
     }
 }
+//export default withRouter(EditItem);

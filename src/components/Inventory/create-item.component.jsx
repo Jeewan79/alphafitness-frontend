@@ -71,7 +71,7 @@ export default class CreateItem extends Component {
     onSubmit(e) {
         e.preventDefault();
         
-        console.log('Form Submitted');/*sumbit logic goes here, need backend*/
+        console.log('Form Submitted');
 
         const newItem = {
             item_id: this.state.item_id,
@@ -83,7 +83,7 @@ export default class CreateItem extends Component {
             item_purchaseDate: this.state.item_purchaseDate
         }
 
-        axios.post('http://localhost:4000/items/create/', newItem)
+        axios.post('http://localhost:4000/items/create', newItem)
             .then(res => console.log(res.data));
 
         this.setState({
